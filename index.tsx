@@ -1,16 +1,21 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from './../app';
+import { useRouter } from 'expo-router';
 
-type LandingScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Landing'>;
+const LandingScreen: React.FC = () => {
+  const router = useRouter();
 
-type Props = {
-  navigation: LandingScreenNavigationProp;
-};
+  const handleNavigateToSignUp = () => {
+    console.log('Navigating to SignUp screen');
+    router.push('/auth/SignUp');
+  };
 
-const LandingScreen: React.FC<Props> = ({ navigation }) => {
+  const handleNavigateToSignIn = () => {
+    console.log('Navigating to SignIn screen');
+    router.push('/auth/SignIn');
+  };
+
   return (
     <ImageBackground source={require('./../assets/images/Landing.jpg')} style={styles.backgroundImage}>
       <LinearGradient
@@ -30,13 +35,13 @@ const LandingScreen: React.FC<Props> = ({ navigation }) => {
             <TouchableOpacity style={styles.button}>
               <Image source={require('./../assets/images/google.png')} style={styles.icon} />
             </TouchableOpacity>
-            <TouchableOpacity style={styles.getStartedButton} onPress={() => navigation.navigate('GetStarted')}>
+            <TouchableOpacity style={styles.getStartedButton} onPress={handleNavigateToSignUp}>
               <Text style={styles.getStartedText}>Get Started</Text>
             </TouchableOpacity>
           </View>
           <Text style={styles.signInText}>
             Already have an account?{' '}
-            <Text style={styles.signInLink} onPress={() => navigation.navigate('SignIn')}>
+            <Text style={styles.signInLink} onPress={handleNavigateToSignIn}>
               Sign In
             </Text>
           </Text>
@@ -44,7 +49,7 @@ const LandingScreen: React.FC<Props> = ({ navigation }) => {
       </LinearGradient>
     </ImageBackground>
   );
-}
+};
 
 const styles = StyleSheet.create({
   backgroundImage: {
@@ -68,13 +73,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   title: {
-    fontSize: 48, // Adjusted to match Figma design
+    fontSize: 48,
     color: 'white',
     fontWeight: 'bold',
     marginBottom: 10,
   },
   subtitle: {
-    fontSize: 24, // Adjusted to match Figma design
+    fontSize: 24,
     color: 'white',
     textAlign: 'center',
     marginBottom: 20,
@@ -97,7 +102,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 30,
     height: 30,
-    borderRadius: 15, // Make the icon fit well within the circular button
+    borderRadius: 15,
   },
   getStartedButton: {
     backgroundColor: 'white',
