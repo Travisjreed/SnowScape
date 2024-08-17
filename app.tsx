@@ -5,14 +5,15 @@ import LandingScreen from './app/index';
 import SignInScreen from './app/auth/SignIn';
 import SignUpScreen from './app/auth/SignUp';
 import UserTypeScreen from './app/auth/UserType';
-import SignUpExpertScreen from './app/auth/SignUpExpert'; // Import SignUpExpert screen
+import SignUpExpertScreen from './app/auth/SignUpExpert';
+
 
 export type RootStackParamList = {
   Landing: undefined;
   SignIn: undefined;
   SignUp: undefined;
   UserType: undefined;
-  SignUpExpert: undefined; // Add SignUpExpert to the stack param list
+  SignUpExpert: undefined; 
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -36,6 +37,7 @@ function App() {
           component={SignUpScreen} 
           options={{ title: 'Sign Up' }} 
         />
+
         <Stack.Screen 
           name="UserType" 
           component={UserTypeScreen} 

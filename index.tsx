@@ -6,9 +6,14 @@ import { useRouter } from 'expo-router';
 const LandingScreen: React.FC = () => {
   const router = useRouter();
 
+
   const handleNavigateToUserType = () => {
     console.log('Navigating to UserType screen');
-    router.push('/auth/UserType');  // Navigate to UserType
+    router.push('/auth/UserType'); 
+
+  const handleNavigateToSignUp = () => {
+    console.log('Navigating to SignUp screen');
+    router.push('/auth/SignUp');
   };
 
   const handleNavigateToSignIn = () => {
@@ -35,7 +40,9 @@ const LandingScreen: React.FC = () => {
             <TouchableOpacity style={styles.button}>
               <Image source={require('./../assets/images/google.png')} style={styles.icon} />
             </TouchableOpacity>
+
             <TouchableOpacity style={styles.getStartedButton} onPress={handleNavigateToUserType}>
+            <TouchableOpacity style={styles.getStartedButton} onPress={handleNavigateToSignUp}>
               <Text style={styles.getStartedText}>Get Started</Text>
             </TouchableOpacity>
           </View>
